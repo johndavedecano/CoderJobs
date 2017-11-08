@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 auth-wrapper">
+        <div class="card">
+          <div class="auth-wrapper--inner">
+            <h4>Account Login</h4>
+            <hr />
+            <form>
+              <div class="form-group">
+                <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="Email Address" />
+              </div>
+              <div class="form-group">
+                <input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Password" />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+              <br/>
+              <p><a href="/forgot">Forgot Password</a> or <a href="/register">Create New Account</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

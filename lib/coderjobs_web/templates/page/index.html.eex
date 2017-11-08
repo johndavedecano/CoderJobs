@@ -1,0 +1,91 @@
+<div class="page">
+  <div class="row">
+    <div class="col-md-8 left">
+      <div class="content-inner">
+        <div class="search">
+          <form>
+            <div class="form-row">
+              <div class="col-5">
+                <label class="sr-only" for="inlineFormInputName2">Keyword</label>
+                <input type="text" class="form-control"
+                  id="inlineFormInputName2"
+                  placeholder="e.g Software Developer" />
+              </div>
+              <div class="col-5">
+                <label class="sr-only" for="inlineFormInputName2">Location</label>
+                <input type="text" class="form-control"
+                  id="inlineFormInputName2"
+                  placeholder="e.g Pasig City" />
+              </div>
+              <div class="col-2">
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br />
+
+        <div class="card job-list">
+          <div class="card-body">
+            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
+            <h4 class="card-title">ZAM Apps, Inc.</h4>
+            <p class="card-text job-list-location">Quezon City</p>
+            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
+          </div>
+        </div>
+
+        <div class="card job-list">
+          <div class="card-body">
+            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
+            <h4 class="card-title">ZAM Apps, Inc.</h4>
+            <p class="card-text job-list-location">Quezon City</p>
+            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
+          </div>
+        </div>
+
+        <div class="card job-list">
+          <div class="card-body">
+            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
+            <h4 class="card-title">ZAM Apps, Inc.</h4>
+            <p class="card-text job-list-location">Quezon City</p>
+            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
+          </div>
+        </div>
+
+
+        <div class="card job-list">
+          <div class="card-body">
+            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
+            <h4 class="card-title">ZAM Apps, Inc.</h4>
+            <p class="card-text job-list-location">Quezon City</p>
+            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
+          </div>
+        </div>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <%= render CoderjobsWeb.LayoutView, "side.html", assigns %>
+
+  </div>
+</div>

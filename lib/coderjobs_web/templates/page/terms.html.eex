@@ -1,0 +1,54 @@
+<div class="page">
+  <div class="row">
+    <div class="col-md-8 left">
+      <div class="content-inner">
+        <h3>Terms and Conditions</h3>
+        <div id="tgGeneratedTerm" style="display: block;">
+          <p>
+            These Website Standard Terms and Conditions (these “Terms” or these “Website Standard Terms and Conditions”) contained here on this webpage, shall govern your use of this website.
+          </p>
+          <p>
+            These Terms apply in full force and effect to your use of this Website and by using this Site you accept all terms and conditions in full. You must not use http://coderjobs.ph, if you have any objection to any of these Website Standard Terms and Conditions.
+          </p>
+          <h3>Intellectual Property Rights</h3>
+          <p>
+            Other than content you own, which you may have chosen to include on this Website, CoderJobs.PH and/or its licensors own all rights to the intellectual property and material contained in this Website. You are granted a limited license only, subject to the restrictions provided in these Terms, for purposes of viewing the material contained on http://coderjobs.ph.
+          </p>
+          <h3>Restrictions</h3>
+          <p>
+            You are expressly and emphatically restricted from all of the following:Publishing any Website material in any media, Publicly performing or displaying any Website material, Using this Website in a way that is damaging, or that could be damaging to this Website, Using this Website contrary to applicable laws and regulations, or in a manner that results in, or that could result in harm to the Website, or to any person or business entity, Engaging in any data mining, data harvesting, data extracting or any other similar type activity related to this Website, or while using this Website
+            Using this Website to engage in any type of advertising or marketing activity
+          </p>
+          <p>
+            Certain areas of this Website are restricted from access by you and CoderJobs.PH may further restrict access to other areas of this Website by you, at any time, at its sole discretion. 
+          </p>
+          <h3>No warranties</h3>
+          <p>
+            CoderJobs.PH makes no express or implied warranties or representations of any kind with regards to this Website or the materials contained on this Website. In addition no content contained on this Website shall be considered as providing advice to you.
+          </p>
+          <h3>Limitation of liability</h3>
+          <p>
+            Under no circumstances shall CoderJobs.PH, or any of its officers, directors and employees, be liable to you for anything resulting from or connected to your use of this Website. CoderJobs.PH, including its officers, directors and employees shall not be liable for any indirect, consequential or special liability resulting from or in any way related to your use of this Website.
+          </p>
+          <h3>Severability</h3>
+          <p>
+            Should any provision of these Terms be found to be unenforceable or invalid under any applicable law, the unenforceability or invalidity shall not render these Terms unenforceable or invalid as a whole. Any such provisions shall be deleted without affecting the remaining provisions contained herein.
+          </p>
+          <h3>Variation of Terms</h3>
+          <p>
+            These Terms may be revised at any time CoderJobs.PH sees fit, and you are expected to review such terms on a regular basis to ensure your understanding of all terms and conditions governing use of this Website.post a notification on the main page of our Site, revise the updated date at the bottom of this page, or notify users via email. By using this Website you are acknowledging your responsibility to do so.  
+          </p>
+          <h3>Entire Agreement</h3>
+          <p>
+            These Terms, including any legal notices and disclaimers contained on this Website, constitute the entire agreement between CoderJobs.PH and you with regards to your use of this Website, and replace all prior agreements and understandings with respect to the same.
+          </p>
+          <h3>Governing Law and Jurisdiction</h3>
+          <p>
+            These Terms will be governed by and construed in accordance with the laws of Philippines, and you submit to the nonexclusive jurisdiction of the courts located in Philippines for the resolution of any disputes.
+          </p>
+        </div>
+      </div>
+    </div>
+    <%= render CoderjobsWeb.LayoutView, "side.html", assigns %>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="page">
+  <div class="row">
+    <div class="col-md-8 left">
+      <div class="content-inner">
+        <h3>About Us</h3>
+        <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius, ex ac euismod suscipit, tellus nibh convallis metus, a accumsan mauris neque quis odio. Nulla ut risus sodales mi condimentum mollis eu ac quam. Sed facilisis malesuada odio, nec auctor metus accumsan quis. Proin commodo id risus porta sodales. Mauris id feugiat mauris. Vivamus ac orci ac est convallis efficitur quis non diam. Integer vestibulum condimentum tortor sed luctus.
+        </p>
+        <p>
+        Fusce lobortis justo quis turpis elementum, at semper quam imperdiet. Quisque feugiat neque quis arcu porta, ac scelerisque lectus dictum. Aliquam euismod gravida mi ac rhoncus. Mauris fringilla nibh et finibus posuere. Curabitur nisi arcu, volutpat at erat vitae, hendrerit luctus est. Phasellus dapibus accumsan luctus. Praesent convallis ligula eu sagittis sagittis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque convallis non dolor non sagittis. Maecenas turpis augue, bibendum vitae nisi nec, pulvinar dignissim nisi. In porta blandit porttitor. Nullam leo ante, tristique sit amet pretium nec, porttitor quis augue. Phasellus leo magna, sodales vitae dignissim eu, laoreet sed sem.
+        </p>
+      </div>
+    </div>
+    <%= render CoderjobsWeb.LayoutView, "side.html", assigns %>
+  </div>
+</div>

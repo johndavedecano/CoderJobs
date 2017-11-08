@@ -1,0 +1,22 @@
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 auth-wrapper">
+        <div class="card">
+          <div class="auth-wrapper--inner">
+            <h4>Forgot Password</h4>
+            <hr />
+            <form>
+              <div class="form-group">
+                <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="Email Address" />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Send Confirmation</button>
+              <br/>
+              <p><a href="/login">Back To Login</a> or <a href="/register">Create New Account</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

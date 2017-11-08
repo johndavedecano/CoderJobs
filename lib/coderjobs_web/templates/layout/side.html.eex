@@ -1,0 +1,19 @@
+    <div class="col-md-4 right">
+        <a href="/post" class="btn btn-primary btn-lg btn-block">Post A Job</a>
+        <br/>
+        <p>CoderJobs.PH is the best place to post your software development jobs in the Philippines.</p>
+        <br/>
+
+        <div class="newsletter">
+          <h4>Are you a coder?</h4>
+          <p>Get notified with our newsletter and available jobs.</p>
+          <form>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="button">Sign Up</button>
+              </span>
+              <input required type="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
+            </div>
+          </form>
+        </div>
+    </div>

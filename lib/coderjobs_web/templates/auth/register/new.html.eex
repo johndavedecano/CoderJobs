@@ -1,0 +1,46 @@
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 auth-wrapper">
+        <div class="card">
+          <div class="auth-wrapper--inner">
+            <h4>Create New Account</h4>
+            <hr />
+            <%= form_for @changeset, register_path(@conn, :create), fn f -> %>
+
+              <%= if @changeset.action do %>
+                <div class="alert alert-danger">
+                  <span>Whoops! There was an error.</span>
+                </div>
+              <% end %>
+
+              <div class="form-group">
+                <%= twbs4_text_input_tag_lg f, :name, placeholder: "Name" %>
+                <%= twbs4_error_tag f, :name %>
+              </div>
+              <div class="form-group">
+                <%= twbs4_text_input_tag_lg f, :username, placeholder: "Username" %>
+                <%= twbs4_error_tag f, :username %>
+              </div>
+              <div class="form-group">
+                <%= twbs4_text_input_tag_lg f, :email, placeholder: "Email", type: "email" %>
+                <%= twbs4_error_tag f, :email %>
+              </div>
+              <div class="form-group">
+                <%= twbs4_text_input_tag_lg f, :password, placeholder: "Password", type: "password" %>
+                <%= twbs4_error_tag f, :password %>
+              </div>
+              <div class="form-group">
+                <%= twbs4_text_input_tag_lg f, :password_confirmation, placeholder: "Password Confirmation", type: "password" %>
+                <%= twbs4_error_tag f, :password_confirmation %>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+              <br/>
+              <p><a href="/forgot">Forgot Password</a> or <a href="/login">Back To Login</a></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
