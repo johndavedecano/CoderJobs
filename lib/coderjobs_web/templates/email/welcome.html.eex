@@ -1,0 +1,10 @@
+<p>Hello <%= @user.name %></p>
+
+<p>Click here to confirm your account:<br />
+
+Confirm Account: http://localhost:8000/account/confirm/45d95e02c04e172c199074db4bd195ec<br />
+
+Thank you for using our application!</p>
+
+<p>Regards,<br />
+Coderjobs Team</p>
