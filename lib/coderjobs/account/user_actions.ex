@@ -1,4 +1,4 @@
-defmodule Coderjobs.Account.UserCreateHandler do
+defmodule Coderjobs.Account.UserActions do
 
   alias Coderjobs.Account.User
   alias Coderjobs.Repo
@@ -10,7 +10,7 @@ defmodule Coderjobs.Account.UserCreateHandler do
       |> User.register_changeset(user_params)
       |> Repo.insert
   end
-
+  
   def create(user_params \\ %{}) do
     case insert(user_params) do
       {:ok, user} ->
