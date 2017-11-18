@@ -6,12 +6,24 @@
           <div class="auth-wrapper--inner">
             <h4>Account Login</h4>
             <hr />
-            <form>
+            <form method="POST" action="/login">
+              <input type="hidden"
+                name="_csrf_token"
+                value="<%= @csrf_token %>" />
               <div class="form-group">
-                <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="Email Address" />
+                <input class="form-control form-control-lg"
+                  type="email" 
+                  name="email"
+                  id="email" 
+                  placeholder="Email Address" />
               </div>
               <div class="form-group">
-                <input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Password" />
+                <input class="form-control 
+                  form-control-lg" 
+                  type="password" 
+                  name="password" 
+                  id="password" 
+                  placeholder="Password" />
               </div>
               <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
               <br/>
