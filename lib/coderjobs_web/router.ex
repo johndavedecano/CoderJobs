@@ -39,6 +39,7 @@ defmodule CoderjobsWeb.Router do
 
     get "/login", Auth.LoginController, :new
     post "/login", Auth.LoginController, :create
+    get "/register/:code", Auth.RegisterController, :verify
     get "/register", Auth.RegisterController, :new
     post "/register", Auth.RegisterController, :create
     get "/forgot", Auth.ForgotController, :new

@@ -14,7 +14,7 @@ defmodule Coderjobs.Account.UserActions do
   def create(user_params \\ %{}) do
     case insert(user_params) do
       {:ok, user} ->
-        Email.welcome_email(user) |> Mailer.deliver_now
+        Email.welcome_email(user) |> Mailer.deliver_now # or deliver_later
         {:ok, user}
       {:error, %Ecto.Changeset{} = changeset} ->
         {:error, changeset}

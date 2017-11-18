@@ -18,6 +18,9 @@ defmodule CoderjobsWeb.Auth.RegisterController do
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
-
   end
+
+  def verify(conn, %{"code" => code}) do
+    json(conn, code) |> put_status 403
+  end  
 end
