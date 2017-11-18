@@ -14,7 +14,7 @@ defmodule Coderjobs.Email do
   @message_subject_welcome "Welcome to CoderJobs.ph"
 
   def welcome_email(user) do
-    verification_url = make_url("verify/" <> user.verification_code)
+    verification_url = make_url("register/" <> user.verification_code)
     base_email()
     |> to(user.email)
     |> subject(@message_subject_welcome)

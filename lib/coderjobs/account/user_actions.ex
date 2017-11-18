@@ -32,6 +32,7 @@ defmodule Coderjobs.Account.UserActions do
   end
 
   defp verify_update(user) do
-    Ecto.Changeset.change user, is_verified: true |> Repo.update
+    user = Ecto.Changeset.change user, is_verified: true
+    user |> Repo.update
   end
 end

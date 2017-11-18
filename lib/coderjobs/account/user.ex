@@ -35,7 +35,7 @@ defmodule Coderjobs.Account.User do
 
   defp put_verification_code(changeset) do
     case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{email: email}} ->
+      %Ecto.Changeset{valid?: true} ->
         put_change(changeset, :verification_code, Randomizer.generate(20))
       _ ->
         changeset

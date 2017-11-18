@@ -28,7 +28,11 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
-                <img src="<%= current_user.avatar %>" style="width: 40px; margin-right: 5px; border-radius: 50%;" />
+
+                <img src="<%= current_user.company_logo || '/images/default.png' %>"
+                  style="width: 30px; height:30px; margin-right: 5px; border-radius: 50%;"
+                />
+                
                 <%= if current_user.username do %>
                   <%= current_user.username %>
                 <% else %>
