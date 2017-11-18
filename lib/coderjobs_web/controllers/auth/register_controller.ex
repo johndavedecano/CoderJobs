@@ -25,7 +25,7 @@ defmodule CoderjobsWeb.Auth.RegisterController do
       {:ok, user} ->
         conn
         |> Guardian.Plug.sign_in(user)
-        |> put_flash(:success, "Account verification success. Please update your company details.")
+        |> put_flash(:info, "Account verification success. Please update your company details.")
         |> redirect(to: "/account")
       {:error, _} ->
         conn
