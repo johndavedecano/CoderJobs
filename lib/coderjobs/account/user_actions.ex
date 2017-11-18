@@ -6,7 +6,7 @@ defmodule Coderjobs.Account.UserActions do
   alias Coderjobs.Mailer
 
   def login(email, password) do
-    user = Repo.get_by(User, email: email)
+    user = Repo.get_by(User, email: email, is_verified: true)
     case user do
       nil ->
         {:error, "User not found."}
