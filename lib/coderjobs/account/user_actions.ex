@@ -20,4 +20,18 @@ defmodule Coderjobs.Account.UserActions do
         {:error, changeset}
     end
   end
+
+  def verify(code) do
+    case Repo.get_by(User, verification_code: code) do
+      nil ->
+        {:error, "Unable to verify account."}
+      user -> 
+        verify_update(user)
+        {:ok, user}
+    end
+  end
+
+  defp verify_update(user) do
+    Ecto.Changeset.change user, is_verified: true |> Repo.update
+  end
 end

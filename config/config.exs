@@ -42,11 +42,11 @@ config :coderjobs, Coderjobs.Mailer,
   server: System.get_env("SMTP_HOST"),
   hostname: System.get_env("APP_HOST"),
   port: System.get_env("SMTP_PORT"),
-  username: System.get_env("SMTP_USER"), # or {:system, "SMTP_USERNAME"}
-  password: System.get_env("SMTP_PASS"), # or {:system, "SMTP_PASSWORD"}
+  username: System.get_env("SMTP_USER"),
+  password: System.get_env("SMTP_PASS"),
   tls: :if_available, # can be `:always` or `:never`
-  allowed_tls_versions: [:"tlsv1", :"tlsv1.1", :"tlsv1.2"], # or {":system", ALLOWED_TLS_VERSIONS"} w/ comma seprated values (e.g. "tlsv1.1,tlsv1.2")
-  ssl: false, # can be `true`
+  allowed_tls_versions: [:"tlsv1", :"tlsv1.1", :"tlsv1.2"],
+  ssl: false,
   retries: 1
 
 import_config "#{Mix.env}.exs"

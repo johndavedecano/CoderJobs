@@ -21,6 +21,16 @@ defmodule CoderjobsWeb.Auth.RegisterController do
   end
 
   def verify(conn, %{"code" => code}) do
-    json(conn, code) |> put_status 403
+    case UserActions.verify(code) do
+      {:ok, user} ->
+        conn
+        |> Guardian.Plug.sign_in(user)
+        |> put_flash(:success, "Account verification success. Please update your company details.")
+        |> redirect(to: "/account")
+      {:error, _} ->
+        conn
+        |> put_flash(:error, "Account verification failed.")
+        |> redirect(to: "/")
+    end
   end  
 end
