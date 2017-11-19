@@ -24,6 +24,26 @@ defmodule Coderjobs.Account.UserAuthActions do
     end
   end
 
+  def update_password(password, password_confirmation, _reset_code) when password == "" or password_confirmation == "" do
+    {:error, "Password is required"}
+  end
+
+  def update_password(password, password_confirmation, _reset_code) when password != password_confirmation do
+    {:error, "Password does not match"}
+  end
+
+  def update_password(password, _, reset_code) do
+    case check_reset_code(reset_code) do
+      {:error, reason} -> {:error, reason}
+      {:ok, user} -> change_password(user, password)
+    end
+  end
+
+  def change_password(user, password) do
+    changeset = Ecto.Changeset.change user, password_hash: Comeonin.Bcrypt.hashpwsalt(password)
+    changeset |> Repo.update
+  end
+
   def forgot_password(email) do
     user = Repo.get_by(User, email: email)
     case user do
@@ -32,16 +52,17 @@ defmodule Coderjobs.Account.UserAuthActions do
       user ->
         user
           |> update_reset_code
-          |> Email.reset_email
+          |> Email.reset_email 
           |> Mailer.deliver_now
         {:ok, user}
     end
   end
 
   def update_reset_code(user) do
-    changeset = Ecto.Changeset.change user, reset_code: Randomizer.generate(20)
+    reset_code = Randomizer.generate(20)
+    changeset = Ecto.Changeset.change user, reset_code: reset_code
     case changeset |> Repo.update do
-      {:ok, _} -> user
+      {:ok, _} -> Repo.get_by(User, reset_code: reset_code) # We have to return an updated user
       {:error, _} -> {:error, "Unable to update user reset code for #{user.id}"}
     end
   end
@@ -80,7 +101,7 @@ defmodule Coderjobs.Account.UserAuthActions do
   end
 
   defp verify_update(user) do
-    user = Ecto.Changeset.change user, is_verified: true
-    user |> Repo.update
+    changeset = Ecto.Changeset.change user, is_verified: true
+    changeset |> Repo.update
   end
 end

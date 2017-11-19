@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 auth-wrapper">
+        <div class="card">
+          <div class="auth-wrapper--inner">
+            <h4>Reset Password</h4>
+            <hr />
+            <form action="/reset/<%= @reset_code %>" method="POST">
+              <p>Fill up the form below with your new password.</p>
+              <input type="hidden"
+                name="_csrf_token"
+                value="<%= @csrf_token %>" />
+              <input type="hidden"
+                name="reset_code"
+                value="<%= @reset_code %>" />
+              <div class="form-group">
+                <input id="password"
+                  type="password"
+                  name="password"
+                  class="form-control form-control-lg"
+                  placeholder="Password" />
+              </div>
+              <div class="form-group">
+                <input id="password_confirmation"
+                  type="password"
+                  name="password_confirmation"
+                  class="form-control form-control-lg"
+                  placeholder="Password Confirmation" />
+              </div>
+                <button type="submit"
+                  class="btn btn-primary btn-block btn-lg">Reset Password
+                </button>
+              <br/>
+              <p><a href="/login">Back To Login</a> or <a href="/register">Create New Account</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
