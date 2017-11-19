@@ -46,8 +46,8 @@ defmodule CoderjobsWeb.Router do
     post "/register", Auth.RegisterController, :create
     get "/forgot", Auth.ForgotController, :new
     post "/forgot", Auth.ForgotController, :create
-    get "/reset", Auth.ResetController, :new
-    post "/reset", Auth.ResetController, :create
+    get "/reset/:code", Auth.ResetController, :new
+    post "/reset/:code", Auth.ResetController, :create
 
     scope "/" do
       pipe_through [:login_required]

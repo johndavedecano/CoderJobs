@@ -6,11 +6,20 @@
           <div class="auth-wrapper--inner">
             <h4>Forgot Password</h4>
             <hr />
-            <form>
+            <form action="/forgot" method="POST">
+              <input type="hidden"
+                name="_csrf_token"
+                value="<%= @csrf_token %>" />
               <div class="form-group">
-                <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="Email Address" />
+                <input id="email"
+                  type="email"
+                  name="email"
+                  class="form-control form-control-lg"
+                  placeholder="Email Address" />
               </div>
-              <button type="submit" class="btn btn-primary btn-block btn-lg">Send Confirmation</button>
+                <button type="submit"
+                  class="btn btn-primary btn-block btn-lg">Send Confirmation
+                </button>
               <br/>
               <p><a href="/login">Back To Login</a> or <a href="/register">Create New Account</a></p>
             </form>

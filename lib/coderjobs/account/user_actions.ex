@@ -1,9 +1,11 @@
 defmodule Coderjobs.Account.UserActions do
 
   alias Coderjobs.Account.User
+  
   alias Coderjobs.Repo
   alias Coderjobs.Email
   alias Coderjobs.Mailer
+  alias Coderjobs.Randomizer
 
   def login(email, password) do
     user = Repo.get_by(User, email: email, is_verified: true)
@@ -20,6 +22,25 @@ defmodule Coderjobs.Account.UserActions do
       true -> {:ok, user}
       false -> {:error, "Invalid password."}
     end
+  end
+
+  def forgot_password(email) do
+    user = Repo.get_by(User, email: email)
+    case user do
+      nil ->
+        {:error, "User not found"}
+      user ->
+        user
+          |> update_reset_code
+          |> Email.reset_email
+          |> Mailer.deliver_now
+        {:ok, user}
+    end
+  end
+
+  def update_reset_code(user) do
+    user = Ecto.Changeset.change user, reset_code: Randomizer.generate(20)
+    user |> Repo.update
   end
 
   def insert(user_params \\ %{}) do

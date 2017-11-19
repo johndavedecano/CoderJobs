@@ -12,6 +12,7 @@ defmodule Coderjobs.Email do
   @mail_reply_to "editors@coderjobs.ph"
   
   @message_subject_welcome "Welcome to CoderJobs.ph"
+  @message_subject_reset "Password Reset"
 
   def welcome_email(user) do
     verification_url = make_url("register/" <> user.verification_code)
@@ -23,8 +24,14 @@ defmodule Coderjobs.Email do
     |> render("welcome.html")
   end
 
-  defp make_url(suffix) do
-    Endpoint.url() <> "/" <> suffix
+  def reset_email(user) do
+    reset_url = make_url("reset/" <> user.verification_code)
+    base_email()
+    |> to(user.email)
+    |> subject(@message_subject_reset)
+    |> assign(:user, user)
+    |> assign(:reset_url, reset_url)
+    |> render("reset.html")
   end
 
   defp base_email() do
@@ -32,5 +39,9 @@ defmodule Coderjobs.Email do
     |> from(@mail_from)
     |> put_header("Reply-To", @mail_reply_to)
     |> put_html_layout({CoderjobsWeb.LayoutView, @base_layout})
+  end
+
+  defp make_url(suffix) do
+    Endpoint.url() <> "/" <> suffix
   end
 end

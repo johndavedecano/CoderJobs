@@ -1,0 +1,12 @@
+<p>Hello <%= @user.name %></p>
+
+<p>Click here to confirm your account:<br />
+
+Verify Account:<br />
+<a href="<%= @reset_url %>"><%= @reset_url %></a>
+<br />
+
+Thank you for using our application!</p>
+
+<p>Regards,<br />
+Coderjobs Team</p>
