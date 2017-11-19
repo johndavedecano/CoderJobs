@@ -1,14 +1,14 @@
 defmodule CoderjobsWeb.Auth.LoginController do
   use CoderjobsWeb, :controller
   
-  alias Coderjobs.Account.UserActions
+  alias Coderjobs.Account.UserAuthActions
 
   def new(conn, _params) do
     render conn, "new.html", csrf_token: get_csrf_token()
   end
 
   def create(conn, %{"email" => email, "password" => password}) do
-    case UserActions.login(email, password) do
+    case UserAuthActions.login(email, password) do
       {:error, _} ->
         conn
         |> put_flash(:error, "Invalid username or password.")

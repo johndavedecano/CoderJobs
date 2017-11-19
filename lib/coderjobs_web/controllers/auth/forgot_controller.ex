@@ -1,14 +1,14 @@
 defmodule CoderjobsWeb.Auth.ForgotController do
   use CoderjobsWeb, :controller
   
-  alias Coderjobs.Account.UserActions
+  alias Coderjobs.Account.UserAuthActions
 
   def new(conn, _params) do
     render conn, "new.html", csrf_token: get_csrf_token()
   end
 
   def create(conn, %{"email" => email}) do
-    case UserActions.forgot_password(email) do
+    case UserAuthActions.forgot_password(email) do
       {:error, _} ->
         conn
         |> put_flash(:error, "Invalid email address.")

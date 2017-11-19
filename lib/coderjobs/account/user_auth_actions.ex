@@ -1,4 +1,4 @@
-defmodule Coderjobs.Account.UserActions do
+defmodule Coderjobs.Account.UserAuthActions do
 
   alias Coderjobs.Account.User
   
@@ -43,6 +43,13 @@ defmodule Coderjobs.Account.UserActions do
     case changeset |> Repo.update do
       {:ok, _} -> user
       {:error, _} -> {:error, "Unable to update user reset code for #{user.id}"}
+    end
+  end
+
+  def check_reset_code(reset_code) do
+    case Repo.get_by(User, reset_code: reset_code) do
+      nil -> {:error, "Invalid password reset code."}
+      user -> {:ok, user}
     end
   end
 
