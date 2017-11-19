@@ -2,8 +2,11 @@
 # CoderJobs
 A job board application using Phoenix Framework
 
-To start your Phoenix server:
+![My Image](https://raw.githubusercontent.com/johndavedecano/CoderJobs/master/screenshot.png)
 
+To start your Phoenix server:
+  * Edit .env.example with your own configs and save it as .env.
+  * Then apply env variables to your system `source .env`
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `cd assets && npm install`
