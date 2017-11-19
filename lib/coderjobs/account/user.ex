@@ -16,6 +16,7 @@ defmodule Coderjobs.Account.User do
     field :password_hash, :string
     field :username, :string, unique: true
     field :verification_code, :string
+    field :reset_code, :string
     timestamps()
   end
 

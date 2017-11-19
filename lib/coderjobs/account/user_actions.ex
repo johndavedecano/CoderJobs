@@ -39,8 +39,11 @@ defmodule Coderjobs.Account.UserActions do
   end
 
   def update_reset_code(user) do
-    user = Ecto.Changeset.change user, reset_code: Randomizer.generate(20)
-    user |> Repo.update
+    changeset = Ecto.Changeset.change user, reset_code: Randomizer.generate(20)
+    case changeset |> Repo.update do
+      {:ok, _} -> user
+      {:error, _} -> {:error, "Unable to update user reset code for #{user.id}"}
+    end
   end
 
   def insert(user_params \\ %{}) do

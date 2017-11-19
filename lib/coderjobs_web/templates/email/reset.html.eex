@@ -1,8 +1,8 @@
 <p>Hello <%= @user.name %></p>
 
-<p>Click here to confirm your account:<br />
+<p>Looks like you forgot your password, please click the link below to reset it.<br />
 
-Verify Account:<br />
+Reset Link:<br />
 <a href="<%= @reset_url %>"><%= @reset_url %></a>
 <br />
 

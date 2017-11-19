@@ -15,7 +15,7 @@ defmodule CoderjobsWeb.Auth.ForgotController do
         |> redirect(to: "/forgot")
       {:ok, user} ->
         conn
-        |> put_flash(:success, "Reset code has been successfully sent to #{user.email}.")
+        |> put_flash(:info, "Reset code has been successfully sent to #{user.email}.")
         |> redirect(to: "/login")
     end
   end

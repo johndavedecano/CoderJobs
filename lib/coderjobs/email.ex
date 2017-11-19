@@ -25,7 +25,7 @@ defmodule Coderjobs.Email do
   end
 
   def reset_email(user) do
-    reset_url = make_url("reset/" <> user.verification_code)
+    reset_url = make_url("reset/" <> user.reset_code)
     base_email()
     |> to(user.email)
     |> subject(@message_subject_reset)
