@@ -20,6 +20,13 @@ defmodule Coderjobs.Account.User do
     timestamps()
   end
 
+  def account_changeset(%User{} = user, attrs) do
+    user
+    |> cast(attrs, [:name, :username, :mobile, :company, :company_logo])
+    |> unique_constraint(:username)
+    |> validate_required([:name, :username, :mobile, :company, :company_logo])
+  end
+
   @doc false
   def register_changeset(%User{} = user, attrs) do
     user
