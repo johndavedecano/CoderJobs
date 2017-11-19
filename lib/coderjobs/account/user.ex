@@ -11,20 +11,45 @@ defmodule Coderjobs.Account.User do
     field :is_verified, :boolean, default: false
     field :mobile, :string
     field :name, :string
+    
+    field :password_current, :string, virtual: true
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
     field :password_hash, :string
+
     field :username, :string, unique: true
     field :verification_code, :string
     field :reset_code, :string
     timestamps()
   end
 
+  def password_changeset(%User{} = user, attrs) do
+    user
+    |> cast(attrs, [:password, :password_confirmation, :password_current])
+    |> validate_required([:password, :password_current, :password_confirmation])
+    |> validate_length(:password, min: 6, max: 25)
+    |> validate_confirmation(:password)
+    |> validate_password(user)
+    |> put_password_hash
+  end
+
+  defp validate_password(changeset, user) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: _}} ->
+        case Comeonin.Bcrypt.checkpw(get_field(changeset, :password_current), user.password_hash) do
+          true -> changeset
+          false -> add_error(changeset, :password_current, "is invalid")
+        end
+      _ ->
+        changeset
+    end
+  end
+
   def account_changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:name, :username, :mobile, :company, :company_logo])
     |> unique_constraint(:username)
-    |> validate_required([:name, :username, :mobile, :company, :company_logo])
+    |> validate_required([:name, :username, :mobile, :company])
   end
 
   @doc false

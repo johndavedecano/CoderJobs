@@ -1,3 +1,4 @@
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <div class="page">
   <div class="row">
     <div class="col-md-8 left">
@@ -5,6 +6,19 @@
         <h3>Account Preference</h3>
         <hr />
         <%= form_for @changeset, account_path(@conn, :update), fn f -> %>
+
+        <div class="form-group text-center">
+          <p>
+            <img id="company_logo_preview"
+            class="rounded-circle" 
+            src="<%= @user.company_logo || "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" %>"
+            alt="Generic placeholder image"
+            width="140"
+            height="140">
+          </p>
+          <input type="hidden" value="<%= @user.company_logo %>" id="company_logo" name="user[company_logo]" />
+          <button type="button" class="btn btn-default" onclick="openUploadWidget()">Select Company Logo</button>
+        </div>
 
         <%= if @changeset.action do %>
           <div class="alert alert-danger">
@@ -31,11 +45,7 @@
           <%= twbs4_text_input_tag_lg f, :company, placeholder: "Company Name" %>
           <%= twbs4_error_tag f, :company %>
         </div>
-
-        <div class="form-group">
-          dfgsdgdg
-        </div>
-
+        
         <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
 
         <% end %>
@@ -44,3 +54,30 @@
     <%= render CoderjobsWeb.AccountView, "sidebar.html", assigns %>
   </div>
 </div>
+
+<script type="text/javascript">
+  function openUploadWidget() {
+
+      const options = {
+        cloud_name: '<%= System.get_env("CLOUDINARY_CLOUD_NAME") %>',
+        upload_preset: '<%= System.get_env("CLOUDINARY_UPLOAD_PRESET") %>',
+        thumbnail_transformation: { width: 150, height: 150, crop: 'fit' }
+      }
+
+      cloudinary.openUploadWidget(
+        options,
+        function(error, result = [{}]) {
+          if (error) {
+            console.log(error) // Not really an error.
+            return
+          }
+
+          const photo = result[0]
+          const thumbnail = photo.thumbnail_url.replace(/^https?:/, '');
+
+          document.getElementById('company_logo').value = thumbnail;
+          document.getElementById('company_logo_preview').src = thumbnail;
+        }
+      );
+  }
+</script>

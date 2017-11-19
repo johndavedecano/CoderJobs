@@ -53,6 +53,10 @@ defmodule CoderjobsWeb.Router do
       pipe_through [:login_required]
       get "/account", AccountController, :index
       put "/account", AccountController, :update
+      post "/account", AccountController, :update
+      get "/account/password", AccountController, :index_password
+      put "/account/password", AccountController, :update_password
+      post "/account/password", AccountController, :update_password
       get "/post", AccountController, :index
     end
   end

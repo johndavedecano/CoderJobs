@@ -1,6 +1,7 @@
     <div class="col-md-4 right">
       <ul class="list-group">
         <li class="list-group-item"><a href="/account">General Settings</a></li>
+        <li class="list-group-item"><a href="/account/password">Security Settings</a></li>
         <!--<li class="list-group-item">Payment and Billing</li>-->
       </ul>
     </div>
