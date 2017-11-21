@@ -1,0 +1,11 @@
+<div class="page">
+  <div class="row">
+    <div class="col-md-8 left">
+      <div class="content-inner">
+        <h3>Edit Job</h3>
+sdgasgdsagasd
+      </div>
+    </div>
+    <%= render CoderjobsWeb.JobsView, "side.html", assigns %>
+  </div>
+</div>
