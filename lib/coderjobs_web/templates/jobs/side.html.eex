@@ -1,4 +1,5 @@
     <div class="col-md-4 right">
+      <a style="margin-bottom: 15px;" href="/jobs/submit" class="btn btn-primary btn-lg btn-block">Post A Job</a>
       <ul class="list-group">
         <li class="list-group-item"><a href="/jobs">Active</a></li>
         <li class="list-group-item"><a href="/jobs?status=drafts">Drafts</a></li>
