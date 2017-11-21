@@ -1,5 +1,5 @@
     <div class="col-md-4 right">
-        <a href="/post" class="btn btn-primary btn-lg btn-block">Post A Job</a>
+        <a href="/jobs/submit" class="btn btn-primary btn-lg btn-block">Post A Job</a>
         <br/>
         <p>CoderJobs.PH is the best place to post your software development jobs in the Philippines.</p>
         <br/>

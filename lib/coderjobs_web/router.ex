@@ -31,16 +31,17 @@ defmodule CoderjobsWeb.Router do
   scope "/", CoderjobsWeb do
     pipe_through [:browser, :browser_session]
 
+    # PUBLIC PAGES
     get "/", PageController, :index
     get "/about", PageController, :about
     get "/contact", PageController, :contact
     post "/contact", PageController, :contact_post
     get "/terms", PageController, :terms
 
+    # AUTH STUFF
     get "/login", Auth.LoginController, :new
     post "/login", Auth.LoginController, :create
     get "/logout", Auth.LoginController, :delete
-
     get "/register/:code", Auth.RegisterController, :verify
     get "/register", Auth.RegisterController, :new
     post "/register", Auth.RegisterController, :create
@@ -51,13 +52,20 @@ defmodule CoderjobsWeb.Router do
 
     scope "/" do
       pipe_through [:login_required]
+      # USER SETTINGS
       get "/account", AccountController, :index
       put "/account", AccountController, :update
       post "/account", AccountController, :update
       get "/account/password", AccountController, :index_password
       put "/account/password", AccountController, :update_password
       post "/account/password", AccountController, :update_password
-      get "/post", AccountController, :index
+      # USER JOBS
+      get "/jobs", JobsController, :index 
+      get "/jobs/submit", JobsController, :new
+      post "jobs/jobs/submit", JobsController, :create
+      get "/jobs/update/:id", JobsController, :edit
+      post "/jobs/update/:id", JobsController, :update
+      delete "/jobs/update/:id", JobsController, :delete
     end
   end
 
