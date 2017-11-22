@@ -62,7 +62,7 @@ defmodule CoderjobsWeb.Router do
       # USER JOBS
       get "/jobs", JobsController, :index 
       get "/jobs/submit", JobsController, :new
-      post "jobs/jobs/submit", JobsController, :create
+      post "jobs/submit", JobsController, :create
       get "/jobs/update/:id", JobsController, :edit
       post "/jobs/update/:id", JobsController, :update
       delete "/jobs/update/:id", JobsController, :delete

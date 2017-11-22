@@ -15,23 +15,23 @@
               <% end %>
 
               <div class="form-group">
-                <%= twbs4_text_input_tag_lg f, :name, placeholder: "Name" %>
+                <%= twbs4_text_input_tag f, :name, placeholder: "Name" %>
                 <%= twbs4_error_tag f, :name %>
               </div>
               <div class="form-group">
-                <%= twbs4_text_input_tag_lg f, :username, placeholder: "Username" %>
+                <%= twbs4_text_input_tag f, :username, placeholder: "Username" %>
                 <%= twbs4_error_tag f, :username %>
               </div>
               <div class="form-group">
-                <%= twbs4_text_input_tag_lg f, :email, placeholder: "Email", type: "email" %>
+                <%= twbs4_text_input_tag f, :email, placeholder: "Email", type: "email" %>
                 <%= twbs4_error_tag f, :email %>
               </div>
               <div class="form-group">
-                <%= twbs4_text_input_tag_lg f, :password, placeholder: "Password", type: "password" %>
+                <%= twbs4_text_input_tag f, :password, placeholder: "Password", type: "password" %>
                 <%= twbs4_error_tag f, :password %>
               </div>
               <div class="form-group">
-                <%= twbs4_text_input_tag_lg f, :password_confirmation, placeholder: "Password Confirmation", type: "password" %>
+                <%= twbs4_text_input_tag f, :password_confirmation, placeholder: "Password Confirmation", type: "password" %>
                 <%= twbs4_error_tag f, :password_confirmation %>
               </div>
               <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>

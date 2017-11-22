@@ -27,22 +27,22 @@
         <% end %>
 
         <div class="form-group">
-          <%= twbs4_text_input_tag_lg f, :username, placeholder: "Username" %>
+          <%= twbs4_text_input_tag f, :username, placeholder: "Username" %>
           <%= twbs4_error_tag f, :username %>
         </div>
 
         <div class="form-group">
-          <%= twbs4_text_input_tag_lg f, :name, placeholder: "Name" %>
+          <%= twbs4_text_input_tag f, :name, placeholder: "Name" %>
           <%= twbs4_error_tag f, :name %>
         </div>
 
         <div class="form-group">
-          <%= twbs4_text_input_tag_lg f, :mobile, placeholder: "Mobile Number" %>
+          <%= twbs4_text_input_tag f, :mobile, placeholder: "Mobile Number" %>
           <%= twbs4_error_tag f, :mobile %>
         </div>
 
         <div class="form-group">
-          <%= twbs4_text_input_tag_lg f, :company, placeholder: "Company Name" %>
+          <%= twbs4_text_input_tag f, :company, placeholder: "Company Name" %>
           <%= twbs4_error_tag f, :company %>
         </div>
         

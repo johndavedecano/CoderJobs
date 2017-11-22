@@ -3,7 +3,34 @@
     <div class="col-md-8 left">
       <div class="content-inner">
         <h3>Submit A Job</h3>
-sdgasgdsagasd
+        <hr />
+        <%= form_for @changeset, jobs_path(@conn, :create), fn f -> %>
+
+        <div class="form-group">
+          <%= twbs4_text_input_tag f, :title, placeholder: "Title" %>
+          <%= twbs4_error_tag f, :title %>
+        </div>
+
+        <div class="form-group">
+          <%= twbs4_textarea_tag f, :description, placeholder: "Description", style: "min-height:300px;" %>
+          <%= twbs4_error_tag f, :description %>
+        </div>
+
+        <div class="form-group">
+          <label for="job[url]">Job URL: </label>
+          <%= twbs4_text_input_tag f, :url, placeholder: "http://yourwebsite.com/job.html" %>
+          <%= twbs4_error_tag f, :url %>
+        </div>
+
+        <div class="form-group">
+          <label for="job[url]">Open Job Externally?: </label>
+          <%= twbs4_text_input_tag f, :url, placeholder: "http://yourwebsite.com/job.html" %>
+          <%= twbs4_error_tag f, :url %>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+
+        <% end %>
       </div>
     </div>
     <%= render CoderjobsWeb.JobsView, "side.html", assigns %>
