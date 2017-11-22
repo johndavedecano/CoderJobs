@@ -18,7 +18,7 @@ defmodule CoderjobsWeb.AccountController do
         |> put_flash(:info, "Account was successfully updated.")
         |> redirect(to: "/account")
       {:error, changeset} ->
-        render(conn, "index.html", changeset: changeset)
+        render(conn, "index.html", changeset: changeset, user: user)
     end
   end
 
