@@ -10,8 +10,8 @@ defmodule CoderjobsWeb.Helpers.Twbs4FormHelper do
     end
   end
   
-  def twbs4_text_input_tag_lg(form, field, opts \\ []) do
-    class_name = Keyword.get(opts, :class, "form-control form-control-lg")
+  def twbs4_text_input_tag(form, field, opts \\ []) do
+    class_name = "form-control " <> Keyword.get(opts, :class, "")
     if form.errors[field] do
       custom_opts = Keyword.put(opts, :class, class_name <> " is-invalid")
       text_input form, field, custom_opts
@@ -21,14 +21,26 @@ defmodule CoderjobsWeb.Helpers.Twbs4FormHelper do
     end
   end
 
-  def twbs4_text_input_tag(form, field, opts \\ []) do
-    class_name = Keyword.get(opts, :class, "form-control")
+  def twbs4_textarea_tag(form, field, opts \\ []) do
+    class_name = "form-control " <> Keyword.get(opts, :class, "")
     if form.errors[field] do
       custom_opts = Keyword.put(opts, :class, class_name <> " is-invalid")
-      text_input form, field, custom_opts
+      textarea form, field, custom_opts
     else
       custom_opts = Keyword.put(opts, :class, class_name)
-      text_input form, field, custom_opts
+      textarea form, field, custom_opts
     end
   end
+
+  def twbs4_select_tag(form, field, options, opts \\ []) do
+    class_name = "form-control " <> Keyword.get(opts, :class, "")
+    if form.errors[field] do
+      custom_opts = Keyword.put(opts, :class, class_name <> " is-invalid")
+      select form, field, options, custom_opts
+    else
+      custom_opts = Keyword.put(opts, :class, class_name)
+      select form, field, options, custom_opts
+    end
+  end
+
 end
