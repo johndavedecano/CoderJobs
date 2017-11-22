@@ -7,7 +7,10 @@ defmodule Coderjobs.Job do
   schema "jobs" do
     field :description, :string
     field :is_external, :boolean, default: false
+    field :is_remote, :boolean, default: false
     field :location, :string
+    field :salary, :string
+    field :skills, :string
     field :title, :string
     field :url, :string
     field :user_id, :integer

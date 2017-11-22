@@ -3,7 +3,7 @@ defmodule Coderjobs.Repo.Migrations.AddFieldsJobs do
 
   def change do
     alter table(:jobs) do
-      add :tags, :string
+      add :skills, :string
       add :salary, :string
       add :is_remote, :boolean, default: false, null: false
     end
