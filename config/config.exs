@@ -49,4 +49,5 @@ config :coderjobs, Coderjobs.Mailer,
   ssl: false,
   retries: 1
 
+import_config "vars.exs"
 import_config "#{Mix.env}.exs"

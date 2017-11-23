@@ -5,29 +5,6 @@ defmodule Coderjobs.Posts.Job do
   
   alias Coderjobs.Posts.Job
 
-  @valid_locations [
-    "manila",
-    "quezon-city",
-    "cebu",
-    "davao",
-    "caloocan",
-    "pasay",
-    "las-piñas",
-    "makati",
-    "malabon",
-    "mandaluyong",
-    "marikina", 
-    "muntinlupa",
-    "Navotas", 
-    "parañaque",
-    "pasig",
-    "san-juan",
-    "taguig",
-    "valenzuela",
-    "pampanga",
-    "pateros"
-  ]
-
 
   schema "jobs" do
     field :description, :string
@@ -43,13 +20,17 @@ defmodule Coderjobs.Posts.Job do
     timestamps()
   end
 
+  defp get_locations() do
+    Map.keys(Application.get_env(:coderjobs, :locations))
+  end
+
   @doc false
   def submit_changeset(%Job{} = job, attrs, user_id) do
     job
     |> cast(attrs, [:description, :user_id, :is_external, :is_remote, :location, :salary, :skills, :title, :url])
     |> validate_required([:title, :description, :location, :skills, :status])
     |> validate_inclusion(:status, ["active", "draft"])
-    |> validate_inclusion(:location, @valid_locations)
+    |> validate_inclusion(:location, get_locations())
     |> put_change(:user_id, user_id)
   end
 

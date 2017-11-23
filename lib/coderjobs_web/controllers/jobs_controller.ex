@@ -10,8 +10,16 @@ defmodule CoderjobsWeb.JobsController do
 
   def new(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
-    changeset = Job.submit_changeset(%Job{}, %{}, user.id)
-    render(conn, "new.html", changeset: changeset, user: user)
+    render conn, "new.html",
+      changeset: Job.submit_changeset(%Job{}, %{}, user.id),
+      user: user,
+      locations: get_locations(),
+      salary_ranges: Application.get_env(:coderjobs, :salary_ranges)
+  end
+
+  defp get_locations() do
+    Application.get_env(:coderjobs, :locations)
+    |> Enum.map(fn {k, v} -> {v, k} end)
   end
 
   def create(conn, _params) do

@@ -17,15 +17,39 @@
         </div>
 
         <div class="form-group">
+          <label for="job[is_remote]">Remote: </label>
+          <%= twbs4_select_tag f, :is_remote, ["Remote or Freelance": true, "In-house Job": false] %>
+          <%= twbs4_error_tag f, :is_remote %>
+        </div>
+
+        <div class="form-group">
+          <label for="job[location]">Location: </label>
+          <%= twbs4_select_tag f, :location, @locations %>
+          <%= twbs4_error_tag f, :location %>
+        </div>
+        
+        <div class="form-group">
+          <label for="job[salary]">Estimated Salary: </label>
+          <%= twbs4_select_tag f, :salary, @salary_ranges %>
+          <%= twbs4_error_tag f, :salary %>
+        </div>
+
+        <div class="form-group">
+          <label for="job[skills]">Skills: (optional)</label>
+          <%= twbs4_text_input_tag f, :skills, placeholder: "PHP, MySQL, Javascript, HTML" %>
+          <%= twbs4_error_tag f, :skills %>
+        </div>
+
+        <div class="form-group">
           <label for="job[url]">Job URL: </label>
           <%= twbs4_text_input_tag f, :url, placeholder: "http://yourwebsite.com/job.html" %>
           <%= twbs4_error_tag f, :url %>
         </div>
 
         <div class="form-group">
-          <label for="job[url]">Open Job Externally?: </label>
-          <%= twbs4_text_input_tag f, :url, placeholder: "http://yourwebsite.com/job.html" %>
-          <%= twbs4_error_tag f, :url %>
+          <label for="job[is_external]">Open Externally: </label>
+          <%= twbs4_select_tag f, :is_external, ["Yes, open externally using my URL": true, "No, just open here": false] %>
+          <%= twbs4_error_tag f, :is_external %>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
