@@ -113,3 +113,14 @@ body
 {
     text-align: center;
 }
+
+.user-job-list
+{
+    min-height: 200px;
+}
+
+.page-title
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

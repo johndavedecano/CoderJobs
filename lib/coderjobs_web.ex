@@ -42,6 +42,7 @@ defmodule CoderjobsWeb do
       import CoderjobsWeb.Gettext
       import CoderjobsWeb.Helpers.AuthHelper
       import CoderjobsWeb.Helpers.Twbs4FormHelper
+      import Scrivener.HTML
     end
   end
 
