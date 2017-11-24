@@ -24,7 +24,10 @@ defmodule Coderjobs.Mixfile do
         :logger,
         :runtime_tools,
         :bamboo,
-        :bamboo_smtp
+        :bamboo_smtp,
+        :scrivener,
+        :scrivener_ecto,
+        :scrivener_html
       ]
     ]
   end
@@ -50,7 +53,10 @@ defmodule Coderjobs.Mixfile do
       {:guardian_db, "~> 0.8.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:bamboo_smtp, "~> 1.4.0"}
+      {:bamboo_smtp, "~> 1.4.0"},
+      {:scrivener, "~> 2.0"},
+      {:scrivener_ecto, "~> 1.0"},
+      {:scrivener_html, "~> 1.7"}
     ]
   end
 
