@@ -50,8 +50,6 @@ defmodule CoderjobsWeb.Router do
     get "/reset/:code", Auth.ResetController, :new
     post "/reset/:code", Auth.ResetController, :create
 
-    get "/jobs/:id", JobsController, :show
-
     scope "/" do
       pipe_through [:login_required]
       # USER SETTINGS
@@ -71,6 +69,8 @@ defmodule CoderjobsWeb.Router do
       post "/jobs/update/:id", JobsController, :update
       get "/jobs/destroy/:id", JobsController, :delete
     end
+
+    get "/jobs/:id", JobsController, :show
   end
 
   # Other scopes may use custom stacks.

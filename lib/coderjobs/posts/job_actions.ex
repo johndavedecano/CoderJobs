@@ -8,9 +8,9 @@ defmodule Coderjobs.Posts.JobActions do
   def list(params \\ %{}) do
     Job
     |> where([status: ^"active"])
-    |> scope_by_latest
-    |> scope_by_location(params)
     |> scope_by_search(params)
+    |> scope_by_location(params)
+    |> scope_by_latest
     |> preload([:user])
     |> Repo.paginate(params)
   end
@@ -43,8 +43,7 @@ defmodule Coderjobs.Posts.JobActions do
     case keyword do
       "" -> query
       keyword ->
-        where(query, ilike("title", ^"%#{keyword}%"))
-        |> or_where(ilike("skills", ^"%#{keyword}%"))
+        where(query, like("title", ^"%#{keyword}%"))
     end
   end
 

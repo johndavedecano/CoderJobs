@@ -18,4 +18,9 @@ defmodule CoderjobsWeb.Helpers.TextHelper do
     locations = Application.get_env(:coderjobs, :locations)
     Map.get(locations, key, "")
   end
+
+  def format_datetime(datetime, format) do
+    {:ok, result} = datetime |> Timex.format(format, :strftime)
+    result
+  end
 end
