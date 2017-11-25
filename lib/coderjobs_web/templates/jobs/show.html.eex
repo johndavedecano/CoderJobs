@@ -1,0 +1,10 @@
+<div class="page">
+  <div class="row">
+    <div class="col-md-8 left">
+      <div class="content-inner">
+            sdggsgas
+      </div>
+    </div>
+    <%= render CoderjobsWeb.LayoutView, "side.html", assigns %>
+  </div>
+</div>

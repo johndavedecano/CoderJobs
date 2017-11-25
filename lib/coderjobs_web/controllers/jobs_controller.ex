@@ -4,6 +4,19 @@ defmodule CoderjobsWeb.JobsController do
   alias Coderjobs.Posts.Job
   alias Coderjobs.Posts.JobActions
 
+  def show(conn, %{"id" => id}) do
+    job = JobActions.find_by_id(id)
+    case job do
+      nil ->
+        conn
+        |> put_status(404)
+        |> put_view(CoderjobsWeb.ErrorView)
+        |> render("404.html")
+      job ->
+        render(conn, "show.html", job: job)
+    end
+  end
+
   def index(conn, params \\ %{}) do
     user = Guardian.Plug.current_resource(conn)
     page = JobActions.list_by_user(user.id, params)
