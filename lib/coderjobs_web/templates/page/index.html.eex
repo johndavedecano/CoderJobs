@@ -39,7 +39,11 @@
             <% end %>
 
             <p class="card-text job-list-location">
+              <%= if job.is_remote do %>
+              <span class="badge badge-info">Remote</span>
+              <% else %>
               <span class="badge badge-success"><%= get_location(job.location) %></span>
+              <% end %>
             </p>
 
             <h5 class="card-title">
