@@ -27,7 +27,8 @@ defmodule Coderjobs.Mixfile do
         :bamboo_smtp,
         :scrivener,
         :scrivener_ecto,
-        :scrivener_html
+        :scrivener_html,
+        :timex,
       ]
     ]
   end
@@ -56,7 +57,8 @@ defmodule Coderjobs.Mixfile do
       {:bamboo_smtp, "~> 1.4.0"},
       {:scrivener, "~> 2.0"},
       {:scrivener_ecto, "~> 1.0"},
-      {:scrivener_html, "~> 1.7"}
+      {:scrivener_html, "~> 1.7"},
+      {:timex, "~> 3.1"},
     ]
   end
 
