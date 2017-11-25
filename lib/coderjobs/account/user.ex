@@ -20,6 +20,7 @@ defmodule Coderjobs.Account.User do
     field :username, :string, unique: true
     field :verification_code, :string
     field :reset_code, :string
+    has_many :jobs, Coderjobs.Posts.Job
     timestamps()
   end
 

@@ -16,7 +16,7 @@ defmodule Coderjobs.Posts.Job do
     field :skills, :string
     field :title, :string
     field :url, :string
-    field :user_id, :integer
+    belongs_to :user, Coderjobs.Account.User
     timestamps()
   end
 
@@ -41,6 +41,8 @@ defmodule Coderjobs.Posts.Job do
     |> validate_required([:title, :description, :skills, :status])
     |> validate_inclusion(:status, ["active", "draft"])
     |> validate_inclusion(:location, get_locations())
+    |> validate_length(:title, min: 10, max: 60)
+    |> validate_length(:description, max: 5000)
     |> put_change(:user_id, user_id)
   end
 
