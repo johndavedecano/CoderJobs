@@ -36,12 +36,20 @@ defmodule Coderjobs.Posts.Job do
   @doc false
   def submit_changeset(%Job{} = job, attrs, user_id) do
     job
-    |> cast(attrs, [:description, :user_id, :is_external, :is_remote, :location, :salary, :skills, :title, :url])
+    |> cast(attrs, [:description, :user_id, :is_external, :is_remote, :location, :salary, :skills, :title, :url, :status])
     |> validate_url(:url, message: "URL is not a valid URL!")
-    |> validate_required([:title, :description, :location, :skills, :status])
+    |> validate_required([:title, :description, :skills, :status])
     |> validate_inclusion(:status, ["active", "draft"])
     |> validate_inclusion(:location, get_locations())
     |> put_change(:user_id, user_id)
   end
 
+  @doc false
+  def repost_changeset(%Job{} = job) do
+    job
+    |> cast(%{}, [])
+    |> put_change(:inserted_at, NaiveDateTime.utc_now())
+    |> put_change(:update_at, NaiveDateTime.utc_now())
+    |> put_change(:status, "active")
+  end
 end

@@ -19,8 +19,12 @@
                   <th scope="row"><%= job.id %></th>
                   <td><%= job.title %></td>
                   <td>
-                    <a href="/jobs/update/<%= job.id %>" type="button" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="/jobs/destroy/<%= job.id %>" type="button" class="delete-button btn btn-secondary btn-sm">Delete</a>
+                    <%= if @status == "archived" do %>
+                    <a href="/jobs/repost/<%= job.id %>">Repost</a>
+                    <% else %>
+                    <a href="/jobs/update/<%= job.id %>">Edit</a> | 
+                    <a href="/jobs/destroy/<%= job.id %>" class="delete-button">Delete</a>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>

@@ -2,7 +2,7 @@
       <a style="margin-bottom: 15px;" href="/jobs/submit" class="btn btn-primary btn-lg btn-block">Post A Job</a>
       <ul class="list-group">
         <a class="list-group-item<%= if @status == "active" do " active" end %>" href="/jobs">Active</a>
-        <a class="list-group-item<%= if @status == "drafts" do " active" end %>" href="/jobs?status=drafts">Drafts</a>
+        <a class="list-group-item<%= if @status == "draft" do " active" end %>" href="/jobs?status=draft">Drafts</a>
         <a class="list-group-item<%= if @status == "archived" do " active" end %>" href="/jobs?status=archived">Archived</a>
       </ul>
     </div>

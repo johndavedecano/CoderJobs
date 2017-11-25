@@ -48,14 +48,46 @@ defmodule CoderjobsWeb.JobsController do
     end
   end
 
-  def edit(conn, _params) do
+  def edit(conn, %{"id" => id}) do
     user = Guardian.Plug.current_resource(conn)
+    job = JobActions.find_by_user(id, user.id)
+    case job do
+      nil ->
+        conn
+        |> put_flash(:error, "Cannot find job.")
+        |> redirect(to: "/jobs")
+      job ->
+        render conn, "edit.html",
+        changeset: Job.submit_changeset(job, %{}, user.id),
+        user: user,
+        job: job,
+        locations: get_locations(),
+        salary_ranges: Application.get_env(:coderjobs, :salary_ranges),
+        status: ""
+    end
     render(conn, "edit.html", user: user, status: "")
   end
 
-  def update(conn, %{"job" => job_params}) do
+
+  def repost(conn, %{"id" => id}) do
     user = Guardian.Plug.current_resource(conn)
-    case JobActions.update(job_params, user.id) do
+    job = JobActions.find_by_user!(id, user.id)
+    case JobActions.repost(job) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Job was successfully reposted.")
+        |> redirect(to: "/jobs")
+      {:error, _} ->
+        conn
+        |> put_flash(:error, "Unable to perform such operation.")
+        |> redirect(to: "/jobs")
+    end
+  end
+
+  def update(conn, %{"job" => job_params, "id" => id}) do
+    user = Guardian.Plug.current_resource(conn)
+    job = JobActions.find_by_user!(id, user.id)
+    case JobActions.update(job, job_params, user.id) do
       {:ok, _} ->
         conn
         |> put_flash(:info, "Job was successfully submitted.")
@@ -70,8 +102,17 @@ defmodule CoderjobsWeb.JobsController do
     end
   end
 
-  def delete(conn, _params) do
+  def delete(conn, %{"id" => id}) do
     user = Guardian.Plug.current_resource(conn)
-    render(conn, "edit.html", user: user, status: "")
+    case JobActions.destroy(id, user.id) do
+      {:error, reason} ->
+        conn
+        |> put_flash(:error, reason)
+        |> redirect(to: "/jobs")
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Job was successfully deleted.")
+        |> redirect(to: "/jobs")
+    end
   end
 end
