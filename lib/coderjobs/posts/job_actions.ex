@@ -43,7 +43,7 @@ defmodule Coderjobs.Posts.JobActions do
     case keyword do
       "" -> query
       keyword ->
-        where(query, like("title", ^"%#{keyword}%"))
+        query |> where([j], ilike(j.title, ^"%#{keyword}%"))
     end
   end
 
