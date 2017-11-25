@@ -11,6 +11,14 @@ A job board application using Phoenix Framework
 * Newsletter Integration
 * Static Pages
 
+## Milestone
+
+* RichText Editor for job description
+* Ability to send CV on the page.
+* Mailchimp Integration
+* Job to archive expired posts
+* Administration Panel
+
 To start your Phoenix server:
 
 * Edit .env.example with your own configs and save it as .env.
