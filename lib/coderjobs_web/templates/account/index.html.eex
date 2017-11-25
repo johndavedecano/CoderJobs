@@ -12,7 +12,7 @@
             <a href="#" onclick="openUploadWidget()">
               <img id="company_logo_preview"
               class="rounded-circle" 
-              src="<%= @user.company_logo || "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" %>"
+              src="<%= @user.company_logo || "/images/default.png" %>"
               alt="Generic placeholder image"
               width="140" />
             </a>

@@ -3,18 +3,22 @@
     <div class="col-md-8 left">
       <div class="content-inner">
         <div class="search">
-          <form>
+          <form method="GET">
             <div class="form-row">
               <div class="col-5">
                 <label class="sr-only" for="inlineFormInputName2">Keyword</label>
                 <input type="text" class="form-control"
                   id="inlineFormInputName2"
+                  name="q"
+                  value="<%= @q %>"
                   placeholder="e.g Software Developer" />
               </div>
               <div class="col-5">
                 <label class="sr-only" for="inlineFormInputName2">Location</label>
                 <input type="text" class="form-control"
                   id="inlineFormInputName2"
+                  name="location"
+                  value="<%= @location %>"
                   placeholder="e.g Pasig City" />
               </div>
               <div class="col-2">
@@ -25,63 +29,34 @@
         </div>
 
         <br />
-
+        <%= for job <- @jobs do %>
         <div class="card job-list">
           <div class="card-body">
-            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
-            <h4 class="card-title">ZAM Apps, Inc.</h4>
-            <p class="card-text job-list-location">Quezon City</p>
-            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
-          </div>
-        </div>
+            <%= if job.user.company_logo do %>
+              <img class="float-left job-list-img" src="<%= job.user.company_logo %>">
+            <% else %>
+              <img class="float-left job-list-img" src="/images/default.png">
+            <% end %>
 
-        <div class="card job-list">
-          <div class="card-body">
-            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
-            <h4 class="card-title">ZAM Apps, Inc.</h4>
-            <p class="card-text job-list-location">Quezon City</p>
-            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
-          </div>
-        </div>
+            <p class="card-text job-list-location">
+              <span class="badge badge-success"><%= get_location(job.location) %></span>
+            </p>
 
-        <div class="card job-list">
-          <div class="card-body">
-            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
-            <h4 class="card-title">ZAM Apps, Inc.</h4>
-            <p class="card-text job-list-location">Quezon City</p>
-            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
-          </div>
-        </div>
-
-
-        <div class="card job-list">
-          <div class="card-body">
-            <img class="float-left job-list-img" src="https://larajobs.com/storage/logos/df777ac175419c2c1aa30bf0fb06f882.png">
-            <h4 class="card-title">ZAM Apps, Inc.</h4>
-            <p class="card-text job-list-location">Quezon City</p>
-            <h6 class="card-subtitle mb-2 text-muted">Senior Software Developer</h6>
-          </div>
-        </div>
-
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
+            <h5 class="card-title">
+              <%= if job.is_external do %>
+                <a href="<%= job.url %>" target="_blank">
+              <% else %>
+                <a href="/jobs/<%= job.id %>">
+              <% end %>
+              <%= job.user.company |> truncate %>
               </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+            </h5>
+
+            <p class="card-subtitle mb-2 text-muted"><%= job.title |> truncate %></p>
+          </div>
+        </div>
+        <% end %>
+        <%= pagination_links @page, next: "Next", previous: "Previous", view_style: :bootstrap_v4 %>
       </div>
     </div>
 
