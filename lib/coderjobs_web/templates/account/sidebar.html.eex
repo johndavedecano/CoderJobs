@@ -1,7 +1,7 @@
     <div class="col-md-4 right">
       <ul class="list-group">
-        <li class="list-group-item"><a href="/account">General Settings</a></li>
-        <li class="list-group-item"><a href="/account/password">Security Settings</a></li>
+        <a href="/account"class="list-group-item<%= if @page == "general" do " active" end %>" href="/jobs">General Settings</a>
+        <a href="/account/password"class="list-group-item<%= if @page == "password" do " active" end %>" href="/jobs">Security Settings</a>
         <!--<li class="list-group-item">Payment and Billing</li>-->
       </ul>
     </div>

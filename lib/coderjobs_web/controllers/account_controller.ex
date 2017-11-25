@@ -7,7 +7,7 @@ defmodule CoderjobsWeb.AccountController do
   def index(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
     changeset = User.account_changeset(user, %{})
-    render(conn, "index.html", changeset: changeset, user: user)
+    render(conn, "index.html", changeset: changeset, user: user, page: "general")
   end
 
   def update(conn, %{"user" => user_params}) do
@@ -18,14 +18,14 @@ defmodule CoderjobsWeb.AccountController do
         |> put_flash(:info, "Account was successfully updated.")
         |> redirect(to: "/account")
       {:error, changeset} ->
-        render(conn, "index.html", changeset: changeset, user: user)
+        render(conn, "index.html", changeset: changeset, user: user, page: "general")
     end
   end
 
   def index_password(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
     changeset = User.password_changeset(user, %{})
-    render(conn, "password.html", changeset: changeset, user: user)
+    render(conn, "password.html", changeset: changeset, user: user, page: "password")
   end
 
   def update_password(conn, %{"user" => user_params}) do
@@ -36,7 +36,7 @@ defmodule CoderjobsWeb.AccountController do
         |> put_flash(:info, "Account password was successfully updated.")
         |> redirect(to: "/account/password")
       {:error, changeset} ->
-        render(conn, "password.html", changeset: changeset)
+        render(conn, "password.html", changeset: changeset, page: "password")
     end
   end
 end

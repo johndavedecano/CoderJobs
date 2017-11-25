@@ -9,15 +9,15 @@
 
         <div class="form-group text-center">
           <p>
-            <img id="company_logo_preview"
-            class="rounded-circle" 
-            src="<%= @user.company_logo || "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" %>"
-            alt="Generic placeholder image"
-            width="140"
-            height="140">
+            <a href="#" onclick="openUploadWidget()">
+              <img id="company_logo_preview"
+              class="rounded-circle" 
+              src="<%= @user.company_logo || "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" %>"
+              alt="Generic placeholder image"
+              width="140" />
+            </a>
           </p>
           <input type="hidden" value="<%= @user.company_logo %>" id="company_logo" name="user[company_logo]" />
-          <button type="button" class="btn btn-default" onclick="openUploadWidget()">Select Company Logo</button>
         </div>
 
         <%= if @changeset.action do %>
@@ -51,7 +51,7 @@
         <% end %>
       </div>
     </div>
-    <%= render CoderjobsWeb.AccountView, "sidebar.html", assigns %>
+    <%= render CoderjobsWeb.AccountView, "sidebar.html", page: @page %>
   </div>
 </div>
 
