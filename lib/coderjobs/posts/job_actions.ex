@@ -5,6 +5,26 @@ defmodule Coderjobs.Posts.JobActions do
   import Ecto.Query
 
   @doc false
+  def list(params \\ %{}) do
+    Job
+    |> where([status: ^"active"])
+    |> scope_by_latest
+    |> scope_by_location(params)
+    |> scope_by_search(params)
+    |> preload([:user])
+    |> Repo.paginate(params)
+  end
+
+  @doc false
+  def list_by_user(user_id, params \\ %{}) do
+    Job
+    |> where(user_id: ^user_id)
+    |> scope_by_status(params)
+    |> scope_by_latest
+    |> Repo.paginate(params)
+  end
+
+  @doc false
   def find_by_user(id, user_id) do
     Repo.get_by(Job, id: id, user_id: user_id)
   end
@@ -14,13 +34,22 @@ defmodule Coderjobs.Posts.JobActions do
     Repo.get_by!(Job, id: id, user_id: user_id)
   end
 
-  @doc false
-  def list_by_user(user_id, params) do
-    Job
-    |> where(user_id: ^user_id)
-    |> scope_by_status(params)
-    |> scope_by_latest
-    |> Repo.paginate(params)
+  def scope_by_search(query, params \\ %{}) do
+    keyword = Map.get(params, "q", "")
+    case keyword do
+      "" -> query
+      keyword ->
+        where(query, ilike("title", ^"%#{keyword}%"))
+        |> or_where(ilike("skills", ^"%#{keyword}%"))
+    end
+  end
+
+  def scope_by_location(query, params \\ %{}) do
+    location = Map.get(params, "location", "")
+    case location do
+      "" -> query
+      location -> where(query,  [location: ^location])
+    end
   end
 
   @doc false
@@ -46,7 +75,6 @@ defmodule Coderjobs.Posts.JobActions do
     |> Job.submit_changeset(job_params, user_id)
     |> Repo.update
   end
-
 
   @doc false
   def repost(%Job{} = job) do
