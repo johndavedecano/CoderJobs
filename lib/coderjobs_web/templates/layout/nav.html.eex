@@ -57,7 +57,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-secondary" href="/register">
+              <a class="btn btn-success" href="/register">
                 <i class="icon icon-user"></i> Register
               </a>
             </li>
