@@ -11,7 +11,8 @@
         </div>
 
         <div class="form-group">
-          <%= twbs4_textarea_tag f, :description, placeholder: "Description", style: "min-height:300px;" %>
+          <%= hidden_input(f, :description, id: "editor_hidden") %>
+          <div id="editor"></div>
           <%= twbs4_error_tag f, :description %>
         </div>
 

@@ -110,3 +110,7 @@ body {
 .contact-message {
   min-height: 400px;
 }
+
+#editor {
+  min-height: 300px;
+}

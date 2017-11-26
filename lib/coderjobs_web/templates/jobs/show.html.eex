@@ -4,7 +4,7 @@
       <div class="content-inner">
         <h3><%= @job.title %></h3>
         <div class="description">
-          <%= @job.description %>
+          <%= raw(@job.description) %>
         </div>
         <br />
         <table class="table">

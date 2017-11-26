@@ -78,7 +78,6 @@ defmodule CoderjobsWeb.JobsController do
         salary_ranges: Application.get_env(:coderjobs, :salary_ranges),
         status: ""
     end
-    render(conn, "edit.html", user: user, status: "")
   end
 
 
