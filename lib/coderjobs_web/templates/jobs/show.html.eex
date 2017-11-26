@@ -4,7 +4,7 @@
       <div class="content-inner">
         <h3><%= @job.title %></h3>
         <div class="description">
-          <%= raw(@job.description) %>
+          <%= HtmlSanitizeEx.basic_html(@job.description) |> raw  %>
         </div>
         <br />
         <table class="table">

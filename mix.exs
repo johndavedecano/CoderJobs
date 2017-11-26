@@ -59,6 +59,7 @@ defmodule Coderjobs.Mixfile do
       {:scrivener_ecto, "~> 1.0"},
       {:scrivener_html, "~> 1.7"},
       {:timex, "~> 3.1"},
+      {:html_sanitize_ex, "~> 1.3.0-rc3"},
     ]
   end
 
