@@ -1,6 +1,7 @@
 use Mix.Config
 
 config :coderjobs,
+  admin_email: System.get_env("APP_ADMIN_EMAIL"),
   locations: %{
     "manila" => "Manila",
     "quezon-city" => "Quezon City",

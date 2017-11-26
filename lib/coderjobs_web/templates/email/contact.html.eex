@@ -1,0 +1,14 @@
+<p>Hello Admin,</p>
+
+<p>Someone is trying to contact you.<br />
+
+<ul>
+    <li><%= @name %></li>
+    <li><%= @email %></li>
+    <li><%= @message %></li>
+</ul>
+
+Thank you for using our application!</p>
+
+<p>Regards,<br />
+Coderjobs Contact Form</p>

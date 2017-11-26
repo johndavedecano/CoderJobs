@@ -6,29 +6,31 @@
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius, ex ac euismod suscipit.
         </p>
-        <form method="POST">
-          <input type="hidden" name="_csrf_token" value="<%= @csrf_token %>" />
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input class="form-control"
-              type="email"
-              value="<%= @email %>"
-              name="email" placeholder="e.g johndoe@gmail.com"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              class="contact-message form-control"
-              name="message"
-              placeholder="Your message goes here"
-              required><%= @message %></textarea>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary">Send Message</button>
-          </div>
-        </form>
+             <%= form_for @changeset, page_path(@conn, :contact_post), fn f -> %>
+
+              <%= if @changeset.action do %>
+                <div class="alert alert-danger">
+                  <span>Whoops! There was an error.</span>
+                </div>
+              <% end %>
+
+            <div class="form-group">
+              <%= twbs4_text_input_tag f, :name, placeholder: "Name", required: true %>
+              <%= twbs4_error_tag f, :name %>
+            </div>
+
+              <div class="form-group">
+                <%= twbs4_text_input_tag f, :email, placeholder: "Email", type: "email", required: true %>
+                <%= twbs4_error_tag f, :email %>
+              </div>
+
+              <div class="form-group">
+                <%= twbs4_textarea_tag f, :message, placeholder: "Your message", required: true, class: "contact-message" %>
+                <%= twbs4_error_tag f, :message %>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Send Message</button>
+            <% end %>
         <br />
         <table class="table">
           <tbody>

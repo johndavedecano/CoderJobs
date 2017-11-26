@@ -13,6 +13,7 @@ defmodule Coderjobs.Email do
   
   @message_subject_welcome "Welcome to CoderJobs.ph"
   @message_subject_reset "Password Reset"
+  @message_subject_contact "Contact Form"
 
   def welcome_email(user) do
     verification_url = make_url("register/" <> user.verification_code)
@@ -22,6 +23,16 @@ defmodule Coderjobs.Email do
     |> assign(:user, user)
     |> assign(:verification_url, verification_url)
     |> render("welcome.html")
+  end
+
+  def contact(name, email, message) do
+    base_email()
+    |> to(Application.get_env(:coderjobs, :admin_email))
+    |> subject(@message_subject_contact)
+    |> assign(:name, name)
+    |> assign(:email, email)
+    |> assign(:message, message)
+    |> render("contact.html")
   end
 
   def reset_email(user) do
