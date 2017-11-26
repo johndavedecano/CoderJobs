@@ -16,7 +16,6 @@ A job board application using Phoenix Framework
 
 * Ability to send CV from the job page.
 * Job to archive expired posts
-* Administration Panel
 * Blogs
 * Report Post
 
