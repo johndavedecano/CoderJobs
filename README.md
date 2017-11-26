@@ -6,7 +6,7 @@ A job board application using Phoenix Framework
 
 ## Features
 
-* Registration, Login, Forgot Password, Reset Password'
+* Registration, Login, Forgot Password, Reset Password
 * Manage Jobs, Search, Create, Update, Delete
 * Newsletter Integration
 * Static Pages
