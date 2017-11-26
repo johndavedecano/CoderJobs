@@ -10,10 +10,10 @@ A job board application using Phoenix Framework
 * Manage Jobs, Search, Create, Update, Delete
 * Newsletter Integration
 * Static Pages
+* RichText Editor for job description
 
 ## Milestone
 
-* RichText Editor for job description
 * Ability to send CV on the page.
 * Mailchimp Integration
 * Job to archive expired posts
