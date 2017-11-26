@@ -16,9 +16,9 @@ defmodule Coderjobs.Posts.JobActions do
   end
 
   @doc false
-  def list_by_user(user_id, params \\ %{}) do
+  def list_by_user(user, params \\ %{}) do
     Job
-    |> where(user_id: ^user_id)
+    |> scope_by_user(user)
     |> scope_by_status(params)
     |> scope_by_latest
     |> Repo.paginate(params)
@@ -29,13 +29,29 @@ defmodule Coderjobs.Posts.JobActions do
   end
 
   @doc false
-  def find_by_user(id, user_id) do
-    Repo.get_by(Job, id: id, user_id: user_id)
+  def find_by_user(id, user) do
+    if user.is_admin do
+      Repo.get_by(Job, id: id)
+    else
+      Repo.get_by(Job, id: id, user_id: user.id)
+    end
   end
 
   @doc false
-  def find_by_user!(id, user_id) do
-    Repo.get_by!(Job, id: id, user_id: user_id)
+  def find_by_user!(id, user) do
+    if user.is_admin do
+      Repo.get_by!(Job, id: id)
+    else
+      Repo.get_by!(Job, id: id, user_id: user.id)
+    end
+  end
+
+  def scope_by_user(query, user) do
+    if user.is_admin do
+      query
+    else
+      where(query, user_id: ^user.id)
+    end
   end
 
   def scope_by_search(query, params \\ %{}) do
@@ -51,7 +67,8 @@ defmodule Coderjobs.Posts.JobActions do
     location = Map.get(params, "location", "")
     case location do
       "" -> query
-      location -> where(query,  [location: ^location])
+      location ->
+        query |> where([j], ilike(j.location, ^"%#{location}%"))
     end
   end
 
@@ -73,9 +90,9 @@ defmodule Coderjobs.Posts.JobActions do
   end
 
   @doc false
-  def update(%Job{} = job, job_params \\ %{}, user_id) do
+  def update(%Job{} = job, job_params \\ %{}) do
     job
-    |> Job.submit_changeset(job_params, user_id)
+    |> Job.update_changeset(job_params)
     |> Repo.update
   end
 
@@ -87,8 +104,8 @@ defmodule Coderjobs.Posts.JobActions do
   end
 
   @doc false
-  def destroy(id, user_id) do
-    job = Repo.get_by(Job, id: id, user_id: user_id)
+  def destroy(id, user) do
+    job = find_by_user(id, user)
     case job do
       nil -> {:error, "Unable to find resource"}
       job -> job |> Repo.delete

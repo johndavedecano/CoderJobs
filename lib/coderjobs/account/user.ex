@@ -9,6 +9,7 @@ defmodule Coderjobs.Account.User do
     field :company, :string
     field :company_logo, :string
     field :is_verified, :boolean, default: false
+    field :is_admin, :boolean, default: false
     field :mobile, :string
     field :name, :string
     

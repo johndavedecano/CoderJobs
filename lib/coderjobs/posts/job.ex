@@ -46,6 +46,18 @@ defmodule Coderjobs.Posts.Job do
   end
 
   @doc false
+  def update_changeset(%Job{} = job, attrs) do
+    job
+    |> cast(attrs, [:description, :is_external, :is_remote, :location, :salary, :skills, :title, :url, :status])
+    |> validate_url(:url, message: "URL is not a valid URL!")
+    |> validate_required([:title, :description, :skills, :status])
+    |> validate_inclusion(:status, ["active", "draft"])
+    |> validate_inclusion(:location, get_locations())
+    |> validate_length(:title, min: 10, max: 60)
+    |> validate_length(:description, max: 5000)
+  end
+
+  @doc false
   def repost_changeset(%Job{} = job) do
     job
     |> cast(%{}, [])
