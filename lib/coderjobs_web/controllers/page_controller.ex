@@ -28,13 +28,17 @@ defmodule CoderjobsWeb.PageController do
       changeset: Contact.changeset(%Contact{}, %{})
   end
 
+  def contact_send(conn, %{"email" => email, "name" => name, "message" => message}) do
+    Email.contact(name, email, message) |> Mailer.deliver_now
+    conn
+  end
+
   def contact_post(conn, %{"contact" => params}) do
     changeset = Contact.changeset(%Contact{}, params)
     if changeset.valid? do
-      %{"email" => email, "name" => name, "message" => message} = params
-      Email.contact(name, email, message) |> Mailer.deliver_now
       conn 
       |> put_flash(:info, "Message Sent.")
+      |> contact_send(params)
       |> redirect(to: "/contact")
     else
       conn 
