@@ -19,11 +19,18 @@ defmodule CoderjobsWeb.PageController do
   end
 
   def contact(conn, _params) do
-    render conn, "contact.html"
+    render conn, "contact.html",
+      csrf_token: get_csrf_token(),
+      email: "",
+      message: ""
   end
 
-  def contact_post(conn, _params) do
-    render conn, "contact.html"
+  def contact_post(conn, %{"email" => email, "message" => message}) do
+    render conn,
+      "contact.html",
+      csrf_token: get_csrf_token(),
+      email: email,
+      message: message
   end
 
   def terms(conn, _params) do

@@ -5,7 +5,6 @@ defmodule Coderjobs.Posts.Job do
   
   alias Coderjobs.Posts.Job
 
-
   schema "jobs" do
     field :description, :string
     field :is_external, :boolean, default: false
