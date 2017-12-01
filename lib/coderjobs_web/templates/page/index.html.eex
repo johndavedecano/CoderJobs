@@ -1,6 +1,10 @@
 <div class="page">
   <div class="row">
     <div class="col-md-8 left">
+      <div class="jumbotron text-center featured">
+        <h1>Welcome To Coder Jobs</h1> 
+        <p>Find the coolest software and web development jobs near you.</p>
+      </div>
       <div class="content-inner">
         <div class="search">
           <form method="GET">

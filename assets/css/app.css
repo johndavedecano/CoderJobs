@@ -114,3 +114,15 @@ body {
 #editor {
   min-height: 300px;
 }
+
+.featured {
+  border-radius: 0;
+  background-image: url("/images/featured.jpg");
+  background-size: cover;
+  color: white;
+  text-shadow: black;
+}
+
+.ads {
+  margin-top: 15px;
+}
