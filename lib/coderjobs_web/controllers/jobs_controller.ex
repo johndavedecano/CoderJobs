@@ -19,7 +19,7 @@ defmodule CoderjobsWeb.JobsController do
 
   def index(conn, params \\ %{}) do
     user = Guardian.Plug.current_resource(conn)
-    page = JobActions.list_by_user(user.id, params)
+    page = JobActions.list_by_user(user, params)
     render(conn, "index.html",
       user: user,
       jobs: page.entries,
@@ -61,26 +61,6 @@ defmodule CoderjobsWeb.JobsController do
     end
   end
 
-  def edit(conn, %{"id" => id}) do
-    user = Guardian.Plug.current_resource(conn)
-    job = JobActions.find_by_user(id, user.id)
-    case job do
-      nil ->
-        conn
-        |> put_flash(:error, "Cannot find job.")
-        |> redirect(to: "/jobs")
-      job ->
-        render conn, "edit.html",
-        changeset: Job.submit_changeset(job, %{}, user.id),
-        user: user,
-        job: job,
-        locations: get_locations(),
-        salary_ranges: Application.get_env(:coderjobs, :salary_ranges),
-        status: ""
-    end
-  end
-
-
   def repost(conn, %{"id" => id}) do
     user = Guardian.Plug.current_resource(conn)
     job = JobActions.find_by_user!(id, user.id)
@@ -96,10 +76,29 @@ defmodule CoderjobsWeb.JobsController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    user = Guardian.Plug.current_resource(conn)
+    job = JobActions.find_by_user(id, user)
+    case job do
+      nil ->
+        conn
+        |> put_flash(:error, "Cannot find job.")
+        |> redirect(to: "/jobs")
+      job ->
+        render conn, "edit.html",
+        changeset: Job.update_changeset(job, %{}),
+        user: user,
+        job: job,
+        locations: get_locations(),
+        salary_ranges: Application.get_env(:coderjobs, :salary_ranges),
+        status: ""
+    end
+  end
+
   def update(conn, %{"job" => job_params, "id" => id}) do
     user = Guardian.Plug.current_resource(conn)
-    job = JobActions.find_by_user!(id, user.id)
-    case JobActions.update(job, job_params, user.id) do
+    job = JobActions.find_by_user!(id, user)
+    case JobActions.update(job, job_params) do
       {:ok, _} ->
         conn
         |> put_flash(:info, "Job was successfully submitted.")
@@ -116,7 +115,7 @@ defmodule CoderjobsWeb.JobsController do
 
   def delete(conn, %{"id" => id}) do
     user = Guardian.Plug.current_resource(conn)
-    case JobActions.destroy(id, user.id) do
+    case JobActions.destroy(id, user) do
       {:error, reason} ->
         conn
         |> put_flash(:error, reason)

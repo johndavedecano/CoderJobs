@@ -34,7 +34,7 @@
             <%= if @job.url != "" do %>
             <tr>
               <td><strong>Job URL</strong></td>
-              <td><a href="<%= @job.url %>" target="_blank"><%= @job.url %></a></td>
+              <td><a href="<%= @job.url %>" target="_blank">Visit Website</a></td>
             </tr>
             <% end %>
             <tr>

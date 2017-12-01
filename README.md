@@ -6,18 +6,18 @@ A job board application using Phoenix Framework
 
 ## Features
 
-* Registration, Login, Forgot Password, Reset Password'
+* Registration, Login, Forgot Password, Reset Password
 * Manage Jobs, Search, Create, Update, Delete
-* Newsletter Integration
+* Mailchimp newsletter form
 * Static Pages
+* RichText Editor for job description
 
 ## Milestone
 
-* RichText Editor for job description
-* Ability to send CV on the page.
-* Mailchimp Integration
+* Ability to send CV from the job page.
 * Job to archive expired posts
-* Administration Panel
+* Blogs
+* Report Post
 
 ## Development
 

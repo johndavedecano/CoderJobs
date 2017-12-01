@@ -5,18 +5,8 @@
   <br/>
 
   <div class="newsletter">
-    <h4>Are you a coder?</h4>
-    <p>Get notified with our newsletter and available jobs.</p>
-    <form>
-      <div class="input-group">
-        <span class="input-group-btn">
-          <button class="btn btn-info" type="button">Sign Up</button>
-        </span>
-        <input required type="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
-      </div>
-    </form>
+    <%= render CoderjobsWeb.LayoutView, "mailchimp.html", assigns %>
   </div>
-
   <div class="ads">
     <img src="http://via.placeholder.com/350x300?text=advertisement" />
   </div>
