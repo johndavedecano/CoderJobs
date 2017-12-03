@@ -11,6 +11,7 @@ A job board application using Phoenix Framework
 * Mailchimp newsletter form
 * Static Pages
 * RichText Editor for job description
+* Company public profile
 
 ## Milestone
 
