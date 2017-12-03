@@ -121,6 +121,7 @@ body {
   background-size: cover;
   color: white;
   text-shadow: black;
+  margin: 0;
 }
 
 .ads {
