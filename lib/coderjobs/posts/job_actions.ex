@@ -24,6 +24,7 @@ defmodule Coderjobs.Posts.JobActions do
     |> Repo.paginate(params)
   end
 
+  @doc false
   def find_by_id(id, user) do
     case user do 
       nil -> Repo.get_by(Job, id: id, status: "active") |> Repo.preload([:user])

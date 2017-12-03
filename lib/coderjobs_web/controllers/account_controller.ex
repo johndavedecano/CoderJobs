@@ -4,6 +4,19 @@ defmodule CoderjobsWeb.AccountController do
   alias Coderjobs.Account.User
   alias Coderjobs.Account.UserAccountActions
 
+  def show(conn, %{"id" => id}) do
+    try do
+      user = UserAccountActions.find_by_id!(id)
+      render(conn, "show.html", user: user, page: "general")
+    rescue
+      Ecto.NoResultsError ->
+        conn
+        |> put_status(404)
+        |> put_view(CoderjobsWeb.ErrorView)
+        |> render("404.html")  
+    end
+  end
+
   def index(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
     changeset = User.account_changeset(user, %{})

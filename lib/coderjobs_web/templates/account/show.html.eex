@@ -1,0 +1,39 @@
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<div class="page">
+  <div class="row">
+    <div class="col-md-8 left">
+      <div class="content-inner">
+        <div class="text-center">
+            <p><img class="rounded-circle" width="140px" src="<%= @user.company_logo || "/images/default.png" %>"/></p>
+            <h3><%= @user.company %></h3>
+            <p class="text-muted"><%= @user.state %>, <%= @user.country %></p>
+        </div>
+        <hr />
+        <div class="description"><%= HtmlSanitizeEx.basic_html(@user.description) |> raw  %></div>
+        <table class="table">
+          <tbody>
+            <%= if @user.website != "" do %>
+            <tr>
+              <td><strong>Website</strong></td>
+              <td><a href="<%= @user.website %>" target="_blank">Visit Website</a></td>
+            </tr>
+            <% end %>
+            <%= if @user.industry != "" do %>
+            <tr>
+              <td><strong>Industry</strong></td>
+              <td><%= @user.industry %></td>
+            </tr>
+            <% end %>
+            <%= if @user.company_size != "" do %>
+            <tr>
+              <td><strong>Company Size</strong></td>
+              <td><%= @user.company_size %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= render CoderjobsWeb.LayoutView, "side.html", assigns %>
+  </div>
+</div>

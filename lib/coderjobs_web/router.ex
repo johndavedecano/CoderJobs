@@ -71,6 +71,7 @@ defmodule CoderjobsWeb.Router do
     end
 
     get "/jobs/:id", JobsController, :show
+    get "/company/:id", AccountController, :show
   end
 
   # Other scopes may use custom stacks.

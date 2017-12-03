@@ -37,9 +37,9 @@
         <div class="card job-list">
           <div class="card-body">
             <%= if job.user.company_logo do %>
-              <img class="float-left job-list-img" src="<%= job.user.company_logo %>">
+              <img class="rounded-circle float-left job-list-img" src="<%= job.user.company_logo %>">
             <% else %>
-              <img class="float-left job-list-img" src="/images/default.png">
+              <img class="rounded-circle float-left job-list-img" src="/images/default.png">
             <% end %>
 
             <p class="card-text job-list-location">
