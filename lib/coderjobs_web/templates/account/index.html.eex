@@ -27,25 +27,65 @@
         <% end %>
 
         <div class="form-group">
+          <label for="user[username]">Username:</label>
           <%= twbs4_text_input_tag f, :username, placeholder: "Username" %>
           <%= twbs4_error_tag f, :username %>
         </div>
 
         <div class="form-group">
+          <label for="user[name]">Name:</label>
           <%= twbs4_text_input_tag f, :name, placeholder: "Name" %>
           <%= twbs4_error_tag f, :name %>
         </div>
 
         <div class="form-group">
+          <label for="user[mobile]">Mobile Number:</label>
           <%= twbs4_text_input_tag f, :mobile, placeholder: "Mobile Number" %>
           <%= twbs4_error_tag f, :mobile %>
         </div>
 
         <div class="form-group">
+          <label for="user[company]">Company Name:</label>
           <%= twbs4_text_input_tag f, :company, placeholder: "Company Name" %>
           <%= twbs4_error_tag f, :company %>
         </div>
-        
+
+        <div class="form-group">
+          <label for="user[company_size]">Company Size:</label>
+          <%= twbs4_text_input_tag f, :company_size, placeholder: "Company Size", type: "number" %>
+          <%= twbs4_error_tag f, :company_size %>
+        </div>
+
+        <div class="form-group">
+          <label for="user[website]">Website:</label>
+          <%= twbs4_text_input_tag f, :website, placeholder: "http://", type: "url" %>
+          <%= twbs4_error_tag f, :website %>
+        </div>
+
+        <div class="form-group">
+          <label for="user[industry]">Industry:</label>
+          <%= twbs4_text_input_tag f, :industry, placeholder: "e.g Information Technology" %>
+          <%= twbs4_error_tag f, :industry %>
+        </div>
+
+        <div class="form-group">
+          <label for="user[state]">State or Province:</label>
+          <%= twbs4_text_input_tag f, :state, placeholder: "e.g Califoria" %>
+          <%= twbs4_error_tag f, :state %>
+        </div>
+
+        <div class="form-group">
+          <label for="user[country]">Country:</label>
+          <%= twbs4_text_input_tag f, :country, placeholder: "e.g United States" %>
+          <%= twbs4_error_tag f, :country %>
+        </div>
+
+        <div class="form-group">
+          <%= hidden_input(f, :description, id: "editor_hidden") %>
+          <div id="editor"><%= raw(@user.description) %></div>
+          <%= twbs4_error_tag f, :description %>
+        </div>
+
         <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
 
         <% end %>

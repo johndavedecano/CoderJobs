@@ -12,6 +12,13 @@ defmodule Coderjobs.Account.User do
     field :is_admin, :boolean, default: false
     field :mobile, :string
     field :name, :string
+
+    field :state, :string
+    field :country, :string
+    field :website, :string
+    field :description, :string
+    field :industry, :string
+    field :company_size, :integer, default: 10
     
     field :password_current, :string, virtual: true
     field :password, :string, virtual: true
@@ -49,9 +56,9 @@ defmodule Coderjobs.Account.User do
 
   def account_changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :username, :mobile, :company, :company_logo])
+    |> cast(attrs, [:name, :username, :mobile, :company, :company_logo, :company_size, :state, :country, :website, :description, :industry])
     |> unique_constraint(:username)
-    |> validate_required([:name, :username, :mobile, :company])
+    |> validate_required([:name, :username, :mobile, :company, :company_size, :country, :state, :industry])
   end
 
   @doc false
