@@ -5,7 +5,8 @@ defmodule CoderjobsWeb.JobsController do
   alias Coderjobs.Posts.JobActions
 
   def show(conn, %{"id" => id}) do
-    job = JobActions.find_by_id(id)
+    user = Guardian.Plug.current_resource(conn)
+    job = JobActions.find_by_id(id, user)
     case job do
       nil ->
         conn
