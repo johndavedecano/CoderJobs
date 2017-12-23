@@ -70,6 +70,9 @@ defmodule CoderjobsWeb.Router do
       get "/jobs/destroy/:id", JobsController, :delete
     end
 
+    get "/jobs/apply/:id", JobsApplyController, :new
+    post "/jobs/apply/:id", JobsApplyController, :create
+    
     get "/jobs/:id", JobsController, :show
     get "/company/:id", AccountController, :show
   end

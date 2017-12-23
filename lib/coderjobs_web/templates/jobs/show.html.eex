@@ -41,6 +41,11 @@
               <td><strong>Posted On</strong></td>
               <td><%= @job.inserted_at |> format_datetime("%Y-%m-%d") %></td>
             </tr>
+
+            <tr>
+              <td><strong>Application</strong></td>
+              <td><a href="<%= jobs_apply_path(@conn, :new, @job.id) %>">Send Resume</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
