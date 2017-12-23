@@ -14,6 +14,7 @@ defmodule Coderjobs.Email do
   @message_subject_welcome "Welcome to CoderJobs.ph"
   @message_subject_reset "Password Reset"
   @message_subject_contact "Contact Form"
+  @message_subject_application "Job Application"
 
   def welcome_email(user) do
     verification_url = make_url("register/" <> user.verification_code)
@@ -33,6 +34,16 @@ defmodule Coderjobs.Email do
     |> assign(:email, email)
     |> assign(:message, message)
     |> render("contact.html")
+  end
+
+
+  def send_application(resume, job) do
+    base_email()
+    |> to(job.user.email)
+    |> subject(@message_subject_application)
+    |> assign(:resume, resume)
+    |> assign(:job, job)
+    |> render("application.html")
   end
 
   def reset_email(user) do

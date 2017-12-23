@@ -1,0 +1,18 @@
+<p>Hello <%= @job.user.name %></p>
+
+<p>Someone is apply for the post <br /><%= @job.title %>.</p>
+
+<ul>
+    <li><strong>Name: </strong><%= @resume.name %></li>
+    <li><strong>Website: </strong><%= @resume.website %></li>
+    <li><strong>Github: </strong><%= @resume.github %></li>
+    <li><strong>Mobile: </strong><%= @resume.mobile %></li>
+    <li><strong>Resume: </strong><%= @resume.resume %></li>
+</ul>
+
+<p><%= @resume.coverletter %></p>
+
+Thank you for using our application!</p>
+
+<p>Regards,<br />
+Coderjobs Contact Form</p>

@@ -1,0 +1,22 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td><%= @job.title %></td>
+    </tr>
+    <tr>
+      <td><strong>Company</strong></td>
+      <td><a href="<%= account_path(@conn, :show, @job.user.id) %>"><%= @job.user.company %></a></td>
+    </tr>
+    <tr>
+      <td><strong>Location</strong></td>
+      <td>
+        <%= if @job.is_remote do %>
+        <span class="badge badge-info">Remote</span>
+        <% else %>
+        <span class="badge badge-success"><%= get_location(@job.location) %></span>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
