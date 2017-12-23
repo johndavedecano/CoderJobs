@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find coders jobs in the Philippines">
+    <meta name="author" content="jd@coderjobs.ph">
+    <title><%= @message %></title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+      <a class="navbar-brand" href="/">CoderJobs.PH</a>
+      <button class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <main role="main">
+        <div class="page">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="content-inner text-center">
+                <h3><%= @message %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">All Rights Reserved &copy; 2017 CoderJobs Philippines | <a href="/terms">Terms and Privacy</a></span>
+      </div>
+    </footer>
+    
+  </body>
+</html>

@@ -2,11 +2,23 @@ defmodule CoderjobsWeb.ErrorView do
   use CoderjobsWeb, :view
 
   def render("404.html", _assigns) do
-    "Page not found"
+    render("error.html", message: "Page not found")
   end
 
   def render("500.html", _assigns) do
-    "Internal server error"
+    render("error.html", message: "Internal Server Error")  
+  end
+
+  def render("403.html", _assigns) do
+    render("error.html", message: "Forbidden")  
+  end
+
+  def render("401.html", _assigns) do
+    render("error.html", message: "Unauthorized")  
+  end
+
+  def render("400.html", _assigns) do
+    render("error.html", message: "Bad Request")  
   end
 
   # In case no render clause matches or no
